@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/bookcontroller.js"></script>
+<link rel="stylesheet" href="CSS/bootstrap.css"/>
+<link rel="stylesheet" href="CSS/home.css"/>
+</head>
+<body ng-app="app" bgcolor="gray">
+<h3><b>BOOK FORM IN ANGULAR JS</b></h3>
+<div ng-controller="BookCtrl">
+<form>
+ENTER ISBN<input type="text" ng-model="bookObj.isbn"><br>
+ENTER TITLE<input type="text" ng-model="bookObj.title"><br>
+ENTER PRICE<input type="text" ng-model="bookObj.price"><br>
+ENTER AUTHOR<input type="text" ng-model="bookObj.author"><br>
+<button ng-click="addBook()">ADD BOOK</button>
+</form><br>
+THE NO OF BOOKS ARE :{{books.length}}<br>
+<b>SEARCH</b><input type="text" ng-model="searchTXT">
+<table class="table table">
+<thead>
+<tr>
+<th>ISBN</th>
+<th>TITLE</th>
+<th>AUTHOR</th>
+<th>PRICE</th>
+</tr>
+<tbody>
+<tr ng-repeat="b in books | filter:searchTXT | orderBy:'-price'"><!-- | filter:'searchTXT' | orderBy:'-price' -->
+<td>{{b.isbn}}</td>
+<td>{{b.title}}</td>
+<td>{{b.author}}</td>
+<td>{{b.price}}</td>
+</tbody>
+</table>
+</div>
+
+</body>
+</html>

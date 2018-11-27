@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/evenorodd.js"></script>
+<script type="text/javascript" src="js/dateController.js"></script>
+<script type="text/javascript" src="js/bookcontroller.js"></script>
+<link rel="stylesheet" href="CSS/bootstrap.css"/>
+<link rel="stylesheet" href="CSS/home.css"/>
+</head>
+<body ng-app="app">
+<b>
+<h3><b>WELCOME MESSAGE IN ANGULAR JS</b></h3>
+ENTER YOUR NAME:  <input type="text" ng-model="name"><br>
+<br>
+WELCOME   {{name}}<br>
+<br>
+<hr>
+<h3><b>SUM OF TWO NUMBERS IN ANGULAR JS</b></h3>
+ENTER THE NUMBER 1:<input type="number" ng-model="num1"><br>
+<br>
+ENTER THE NUMBER 2:<input type="number" ng-model="num2"><br>
+<br>
+<div ng-show=" num1!=undefined && num2!=undefined ">
+<b>THE SUM OF TWO NUMBERS {{num1}} and {{num2}} IS: {{num1+num2}}<br></b>
+</div>
+<!-- <b>THIS IS A STATIC PAGE</b><br>
+<b>THIS IS SOME ANGULAR JS EXPRESSION TO DISPLAY SOME DATA: {{1+2}}</b><br>
+<b>{{1/2}}</b><br>
+<b>{{2+40+5/2}}</b> -->
+<br>
+<hr>
+<h3><b>TODAY'S DATE IN ANGULAR JS</b></h3>
+<div ng-controller="DateCtrl">
+<b>TODAY'S DATE :- {{today}}</b>
+</div>
+<hr>
+<h3><b>EVEN OR ODD IN ANGULAR JS</b></h3>
+<div ng-controller="EvenOrOddCtrl">
+<b>ENTER THE NUMBER :</b><input type="number" ng-model="num">
+<button ng-click="evenorodd()">EvenOrOdd</button>
+<br><br>
+THE ENTERED NUMBER {{num}} IS {{result}}
+</div>
+<hr>
+
+</b>
+</body>
+</html>
