@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script> -->
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="controllers/bookcontroller.js"></script>
+<script type="text/javascript" src="services/bookservice.js"></script>
+<link rel="stylesheet" href="CSS/bootstrap.css"/>
+<link rel="stylesheet" href="CSS/home.css"/>
+</head>
+<body ng-app="app">
+<div ng-controller="BookCtrl"><!-- function in bookcontroller.js gets executed -->
+<span style="color:red">{{error.message}}</span>
+<form>
+ENTER TITLE<input type="text" ng-model="book.title"><br>
+ENTER PRICE<input type="text" ng-model="book.price"><br>
+ENTER AUTHOR<input type="text" ng-model="book.author"><br>
+<button ng-click="addBook(book)">ADD BOOK</button>
+</form>
+{{nobooks}}
+THE NO OF BOOKS ARE :{{books.length}}<br>
+<b>SEARCH</b><input type="text" ng-model="searchTXT">
+<table class="table table">
+<thead>
+<tr>
+<th>ISBN</th>
+<th>TITLE</th>
+<th>AUTHOR</th>
+<th>PRICE</th>
+<th>ACTION</th>
+</tr>
+<tbody>
+<tr ng-repeat="b in books | filter:searchTXT | orderBy:'-price'"><!-- | filter:'searchTXT' | orderBy:'-price' -->
+<td>{{b.isbn}}</td>
+<td>{{b.title}}</td>
+<td>{{b.author}}</td>
+<td>{{b.price}}</td>
+<td><a ng-click="getBook(b.isbn)"><span class="glyphicon glyphicon-pencil"></span></a>
+<a ng-click="deleteBook(b.isbn)"><span class="glyphicon glyphicon-trash"></span></a></td>
+</tbody>
+</table>
+</div>
+</body>
+</html>
